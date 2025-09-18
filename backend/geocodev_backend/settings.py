@@ -71,6 +71,6 @@ CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.getenv('CSRF_TRUSTED_ORIGINS','htt
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Activa estos sólo cuando ya tengas HTTPS operativo
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 # HSTS cuando todo vaya fino:
 # SECURE_HSTS_SECONDS = 31536000
