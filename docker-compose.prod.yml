@@ -1,0 +1,44 @@
+services:
+  reverse-proxy:
+    image: caddy:2
+    ports: ["80:80","443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [frontend, backend]
+
+  frontend:
+    build: ./frontend
+    env_file: ./.env.prod
+    expose: ["80"]   # puerto interno del Nginx del frontend
+    depends_on: [backend]
+
+  backend:
+    build: ./backend
+    env_file: ./.env.prod
+    expose: ["8000"]
+    volumes:
+      - media_data:/data/media
+      - static_data:/data/static
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn geocodev_backend.wsgi:application -b 0.0.0.0:8000 -w 3 --timeout 120"
+
+  db:
+    image: postgis/postgis:15-3.4
+    environment:
+      POSTGRES_DB: geocodev
+      POSTGRES_USER: geocodev
+      POSTGRES_PASSWORD: geocodev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  caddy_data:
+  caddy_config:
+  media_data:
+  static_data:
+  db_data:
+

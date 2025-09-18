@@ -1,0 +1,12 @@
+Django>=4.2,<5.0
+djangorestframework>=3.14
+django-cors-headers>=4.3
+gunicorn>=21.2
+psycopg2-binary>=2.9
+geopandas>=0.14
+pyogrio>=0.10
+shapely>=2.0
+pyproj>=3.6
+ezdxf>=1.0
+python-dotenv>=1.0
+dj-database-url>=2.1

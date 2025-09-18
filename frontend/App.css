@@ -1,0 +1,4 @@
+html, body, #root { height: 100%; margin: 0; }
+.container-fluid { height: 100%; }
+.map-wrapper { height: 80vh; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+.sidebar { padding: 1rem; border-right: 1px solid #eee; min-height: 80vh; }

@@ -1,0 +1,22 @@
+www.geocodev-minigis.work {
+  redir https://geocodev-minigis.work{uri} permanent
+}
+
+# Sitio principal con HTTPS automático (Let's Encrypt)
+geocodev-minigis.work {
+  encode gzip
+
+  # SPA (frontend) por defecto
+  handle {
+    reverse_proxy frontend:80
+  }
+
+  # API en /gis → backend Django
+  handle /gis* {
+    reverse_proxy backend:8000
+  }
+
+  # header {
+  #   Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  # }
+}
