@@ -30,7 +30,7 @@ export default function App() {
     form.append('shapefile', selectedFile);
     try {
       setStatus('Subiendo...');
-      const { data } = await api.post('/gis/upload/', form, { headers: {'Content-Type':'multipart/form-data'} });
+      const { data } = await api.post('/upload/', form, { headers: {'Content-Type':'multipart/form-data'} });
       setGeoData(data);
       setStatus('Cargado.');
     } catch (err) {
@@ -45,7 +45,7 @@ export default function App() {
     form.append('buffer_distance', bufferDistance);
     try {
       setStatus('Procesando buffer...');
-      const { data } = await api.post('/gis/operations_shapefile/', form);
+      const { data } = await api.post('/operations_shapefile/', form);
       setBufferedData(data.geojson);
       setStatus(`Buffer ${bufferDistance} m listo.`);
     } catch (err) {
