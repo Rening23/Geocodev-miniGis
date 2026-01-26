@@ -8,7 +8,7 @@
 ## Puesta en marcha (local con Docker)
 
 ```bash
-git clone <TU_REPO>.git geocodev-minigis
+git clone https://github.com/Rening23/Geocodev-miniGis.git
 cd geocodev-minigis
 cp .env.example .env
 # (opcional) edita .env con tus valores
