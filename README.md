@@ -1,4 +1,6 @@
 # Geocodev miniGIS (Django REST + React + Docker)
+[MiniGis.webm](https://github.com/user-attachments/assets/1e58c50a-4811-4d2a-a2f5-0976678ca303)
+
 
 - **Backend** Django + DRF (GeoPandas con **pyogrio** para evitar problemas de GDAL).
 - **Frontend** React (Vite) + Leaflet + leaflet-draw.
